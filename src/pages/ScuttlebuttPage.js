@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useAuth } from "../AuthProvider";
+import { getDatabase, ref, push } from "firebase/database";
 import { Container, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import PaperTheme from "../components/PaperTheme";
@@ -7,6 +9,7 @@ import calculateScore from "../data/calculateScore";
 import "./ScuttlebuttPage.css";
 
 function ScuttlebuttPage() {
+  const { currentUser } = useAuth();
   const [gameState, setGameState] = useState("countdown");
   const [countdown, setCountdown] = useState(3);
   const [sentence, setSentence] = useState("");
@@ -32,7 +35,7 @@ function ScuttlebuttPage() {
       timer = setTimeout(() => setCountdown(countdown - 1), 1000);
     } else if (gameState === "showSentence" && countdown === 0) {
       setGameState("input");
-      setCountdown(1000);
+      setCountdown(10);
     } else if (gameState === "input" && countdown > 0) {
       timer = setTimeout(() => setCountdown(countdown - 1), 1000);
     } else if (gameState === "input" && countdown === 0) {
@@ -45,9 +48,25 @@ function ScuttlebuttPage() {
   useEffect(() => {
     if (gameState === "finished") {
       const score = calculateScore(sentence, userInput);
-      navigate("/results", { state: { userInput } });
+      logScore(score).then((scoreRef) => {
+        navigate("/results", { state: { scoreId: scoreRef.key, userId: currentUser.uid } });
+      });
     }
-  }, [gameState, navigate, userInput]);
+  }, [gameState, navigate, userInput, sentence]);
+
+  const logScore = async (score) => {
+    const db = getDatabase();
+    const userScoresRef = ref(db, `users/${currentUser.uid}/scores`);
+    const scoreData = {
+      score,
+      userInput,
+      sentence,
+      timestamp: new Date().toISOString()
+    };
+    const newScoreRef = await push(userScoresRef, scoreData);
+    return newScoreRef;
+  };
+  
 
   const handleInputChange = (event) => {
     setUserInput(event.target.value);
