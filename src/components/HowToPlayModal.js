@@ -1,5 +1,5 @@
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
 function HowToPlayModal(props) {
   return (
@@ -18,9 +18,9 @@ function HowToPlayModal(props) {
         <h4>Pay Attention to the Scuttlebutt</h4>
         <ul>
           <li>The Scuttlebutt will appear for seconds</li>
-            <li>It will then disappear</li>
-            <li>Remember the Scuttlebutt</li>
-            <li>Type the Scuttlebutt just as you saw it</li>
+          <li>It will then disappear</li>
+          <li>Remember the Scuttlebutt</li>
+          <li>Type the Scuttlebutt just as you saw it</li>
         </ul>
       </Modal.Body>
       <Modal.Footer>

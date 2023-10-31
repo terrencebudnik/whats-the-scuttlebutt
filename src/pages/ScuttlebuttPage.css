@@ -1,14 +1,24 @@
 .scuttlebutt-page-header {
-    text-align: center;
-    margin-top: 20%;
-    font-size: 45px;
-    font-family: "Permanent Marker", cursive;
+  text-align: center;
+  margin-top: 20%;
+  font-size: 45px;
+  font-family: "Permanent Marker", cursive;
 }
 
 .scuttlebutt-page-body {
-    text-align: center;
-    justify-content: center;
-    margin-top: 20%;
-    font-size: 30px;
-    font-family: "Permanent Marker", cursive;
+  text-align: center;
+  justify-content: center;
+  margin-top: 20%;
+  font-size: 30px;
+  font-family: "Permanent Marker", cursive;
+}
+
+.time-left-div {
+  margin-bottom: 40px;
+}
+
+.scuttlebutt-page-text-input {
+  height: 200px;
+  font-size: 20px;
+  font-family: "Permanent Marker", cursive;
 }

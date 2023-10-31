@@ -1,24 +1,14 @@
 .paper-theme {
-    width: 80%;
-    height: 80vh;
-    max-height: 80%;
-    margin: auto;
-    padding: 16px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    background-image: linear-gradient(
-      to bottom,
-      #eaeaea 3px,
-      transparent 3px
-    ), linear-gradient(
-      to bottom,
-      white,
-      white 90%,
-      #0ca1e0 80%,
-      #d0e8f2 80%
-    );
-    background-size: 100% 30px;
-  }
-  
+  width: 80%;
+  height: 80vh;
+  max-height: 80%;
+  margin: auto;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  background-image: linear-gradient(to bottom, #eaeaea 3px, transparent 3px),
+    linear-gradient(to bottom, white, white 90%, #0ca1e0 80%, #d0e8f2 80%);
+  background-size: 100% 30px;
+}

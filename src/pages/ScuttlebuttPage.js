@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Container } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import PaperTheme from "../components/PaperTheme";
 import scuttlebutts from "../data/scuttlebutts";
+import calculateScore from "../data/calculateScore";
 import "./ScuttlebuttPage.css";
 
 function ScuttlebuttPage() {
@@ -13,10 +14,11 @@ function ScuttlebuttPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Set a random sentence when the component mounts
-    const randomIndex = Math.floor(Math.random() * scuttlebutts.scuttlebutts.length);
+    const randomIndex = Math.floor(
+      Math.random() * scuttlebutts.scuttlebutts.length
+    );
     setSentence(scuttlebutts.scuttlebutts[randomIndex]);
-  }, []); // Empty dependency array ensures this runs once when the component mounts
+  }, []);
 
   useEffect(() => {
     let timer;
@@ -30,7 +32,7 @@ function ScuttlebuttPage() {
       timer = setTimeout(() => setCountdown(countdown - 1), 1000);
     } else if (gameState === "showSentence" && countdown === 0) {
       setGameState("input");
-      setCountdown(10);
+      setCountdown(1000);
     } else if (gameState === "input" && countdown > 0) {
       timer = setTimeout(() => setCountdown(countdown - 1), 1000);
     } else if (gameState === "input" && countdown === 0) {
@@ -42,6 +44,7 @@ function ScuttlebuttPage() {
 
   useEffect(() => {
     if (gameState === "finished") {
+      const score = calculateScore(sentence, userInput);
       navigate("/results", { state: { userInput } });
     }
   }, [gameState, navigate, userInput]);
@@ -53,22 +56,30 @@ function ScuttlebuttPage() {
   return (
     <PaperTheme>
       <Container fluid className="scuttlebutt-page">
-        <h1 className="scuttlebutt-page-header">What's the Scuttlebutt?</h1>
-        <div className="scuttlebutt-page-body">
+        <Row>
+          <Col>
+            <h1 className="scuttlebutt-page-header">What's the Scuttlebutt?</h1>
+          </Col>
+        </Row>
+
+        <Row className="scuttlebutt-page-body">
           {gameState === "countdown" && <div>Get ready! {countdown}</div>}
           {gameState === "showSentence" && <div>{sentence}</div>}
           {gameState === "input" && (
-            <div>
+            <Row className="scuttlebutt-page-text-input-row">
+              <Col>
+                <div className="time-left-div">Time left: {countdown}</div>
+              </Col>
               <textarea
+                className="scuttlebutt-page-text-input"
                 value={userInput}
                 onChange={handleInputChange}
                 placeholder="Type the sentence here..."
               />
-              <div>Time left: {countdown}</div>
-            </div>
+            </Row>
           )}
           {gameState === "finished" && <div>Time's up!</div>}
-        </div>
+        </Row>
       </Container>
     </PaperTheme>
   );

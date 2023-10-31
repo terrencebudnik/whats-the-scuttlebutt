@@ -1,14 +1,31 @@
-.home-page-header {
-    text-align: center;
-    margin-top: 20%;
-    font-size: 45px;
-    font-family: "Permanent Marker", cursive;
+.home-page-header-row {
+  margin-top: 10%;
 }
 
-.home-page-body {
-    text-align: center;
-    justify-content: center;
-    margin-top: 20%;
-    font-size: 30px;
-    font-family: "Permanent Marker", cursive;
+.home-page-header {
+  text-align: center;
+  font-size: 44px;
+  font-family: "Permanent Marker", cursive;
+}
+
+.how-to-play-row {
+  text-align: center;
+  margin-top: 10%;
+}
+
+.how-to-play-button {
+  margin: 0 10px;
+  font-size: 24px;
+  font-family: "Permanent Marker", cursive;
+}
+
+.click-to-play-row {
+  margin-top: 10%;
+  font-size: 20px;
+  font-family: "Permanent Marker", cursive;
+}
+
+.click-to-play-link {
+  font-size: 24px;
+  font-family: "Permanent Marker", cursive;
 }
