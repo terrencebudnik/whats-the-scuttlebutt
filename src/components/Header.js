@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useAuth } from "../AuthProvider";
 import Container from "react-bootstrap/Container";
-import Navbar from "react-bootstrap/Navbar";
+import Header from "react-bootstrap/Header";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import LoginComponent from "./LoginComponent";
+import Login from "./Login";
 
-function Nav() {
+function Header() {
   const { currentUser, logout } = useAuth();
   const [showModal, setShowModal] = useState(false);
 
@@ -35,11 +35,11 @@ function Nav() {
           <Modal.Title>Login</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <LoginComponent />
+          <Login />
         </Modal.Body>
       </Modal>
     </Navbar>
   );
 }
 
-export default Nav;
+export default Header;

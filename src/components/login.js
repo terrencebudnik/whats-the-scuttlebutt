@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { useAuth } from "../AuthProvider";
 import { useNavigate } from "react-router-dom";
 
-function LoginComponent() {
+function Login() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [verificationCode, setVerificationCode] = useState("");
   const [confirmationResult, setConfirmationResult] = useState(null);
@@ -53,4 +53,4 @@ function LoginComponent() {
   );
 }
 
-export default LoginComponent;
+export default Login;

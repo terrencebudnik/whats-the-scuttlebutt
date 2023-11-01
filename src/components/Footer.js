@@ -3,7 +3,7 @@ import { useAuth } from "../AuthProvider";
 import Button from "react-bootstrap/Button";
 import "./Footer.css";
 
-function Footer() {
+function footer() {
   const { currentUser, logout } = useAuth();
   return (
     <div className="footer">

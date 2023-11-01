@@ -1,7 +1,7 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
-function HowToPlayModal(props) {
+function Instructions(props) {
   return (
     <Modal
       {...props}
@@ -30,4 +30,4 @@ function HowToPlayModal(props) {
   );
 }
 
-export default HowToPlayModal;
+export default Instructions;

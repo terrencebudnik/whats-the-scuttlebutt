@@ -1,19 +1,19 @@
 import React from "react";
-import PaperTheme from "../components/PaperTheme";
-import Nav from "../components/Navbar";
+import Background from "../components/Background";
+import Header from "../components/Header";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import HowToPlayModal from "../components/HowToPlayModal";
+import Instructions from "../components/Instructions";
 import Button from "react-bootstrap/Button";
 import Footer from "../components/Footer";
-import "./HomePage.css";
+import "./Home.css";
 
-function HomePage() {
+function Home() {
   const [modalShow, setModalShow] = React.useState(false);
 
   return (
-    <PaperTheme>
-      <Nav />
+    <Background >
+      <Header />
       <Container fluid className="home-page">
         <Row className="home-page-header-row">
           <Col>
@@ -31,7 +31,7 @@ function HomePage() {
               How to Play
             </Button>
 
-            <HowToPlayModal
+            <Instructions
               show={modalShow}
               onHide={() => setModalShow(false)}
             />
@@ -46,8 +46,8 @@ function HomePage() {
         </Row>
       </Container>
       <Footer />
-    </PaperTheme>
+    </Background>
   );
 }
 
-export default HomePage;
+export default Home;

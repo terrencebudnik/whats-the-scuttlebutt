@@ -3,12 +3,12 @@ import { useAuth } from "../AuthProvider";
 import { getDatabase, ref, push } from "firebase/database";
 import { Container, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import PaperTheme from "../components/PaperTheme";
-import scuttlebutts from "../data/scuttlebutts";
+import Backgournd from "../components/Background";
+import scuttlebuttList from "../data/scuttlebuttList";
 import calculateScore from "../data/calculateScore";
-import "./ScuttlebuttPage.css";
+import "./Scuttlebutt.css";
 
-function ScuttlebuttPage() {
+function Scuttlebutt() {
   const { currentUser } = useAuth();
   const [gameState, setGameState] = useState("countdown");
   const [countdown, setCountdown] = useState(3);
@@ -18,9 +18,9 @@ function ScuttlebuttPage() {
 
   useEffect(() => {
     const randomIndex = Math.floor(
-      Math.random() * scuttlebutts.scuttlebutts.length
+      Math.random() * scuttlebuttList.scuttlebuttList.length
     );
-    setSentence(scuttlebutts.scuttlebutts[randomIndex]);
+    setSentence(scuttlebuttList.scuttlebuttList[randomIndex]);
   }, []);
 
   useEffect(() => {
@@ -73,7 +73,7 @@ function ScuttlebuttPage() {
   };
 
   return (
-    <PaperTheme>
+    <Background>
       <Container fluid className="scuttlebutt-page">
         <Row>
           <Col>
@@ -100,8 +100,8 @@ function ScuttlebuttPage() {
           {gameState === "finished" && <div>Time's up!</div>}
         </Row>
       </Container>
-    </PaperTheme>
+    </Background>
   );
 }
 
-export default ScuttlebuttPage;
+export default Scuttlebutt;

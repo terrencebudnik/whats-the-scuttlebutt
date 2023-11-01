@@ -1,12 +1,12 @@
 import React from "react";
-import PaperTheme from "../components/PaperTheme";
+import Background from "../components/Background";
 import { Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import "./WelcomePage.css";
+import "./Welcome.css";
 
-function WelcomePage() {
+function Welcome() {
   return (
-    <PaperTheme>
+    <Background>
       <Container fluid className="welcome-page">
         <h1 className="welcome-page-header">What's the Scuttlebutt?</h1>
         <div className="welcome-page-body">
@@ -15,8 +15,8 @@ function WelcomePage() {
           </Link>
         </div>
       </Container>
-    </PaperTheme>
+    </Background>
   );
 }
 
-export default WelcomePage;
+export default Welcome;

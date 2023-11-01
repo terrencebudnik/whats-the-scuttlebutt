@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { getDatabase, ref, onValue } from "firebase/database";
-import PaperTheme from "../components/PaperTheme";
+import Background from "../components/Background";
 import { Container } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
-import "./ResultsPage.css";
+import "./Results.css";
 
-function ResultsPage() {
+function Results() {
   const location = useLocation();
   const { scoreId, userId } = location.state || {};
 
@@ -26,7 +26,7 @@ function ResultsPage() {
     }
   }, [scoreId, userId]);
   return (
-    <PaperTheme>
+    <Background>
       <Container fluid className="results-page">
         <h1 className="results-page-header">What's the Scuttlebutt?</h1>
         <div className="results-page-body">
@@ -45,7 +45,7 @@ function ResultsPage() {
           Click to Play Again!
         </Link>
       </Container>
-    </PaperTheme>
+    </Background>
   );
 }
 
