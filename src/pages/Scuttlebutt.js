@@ -3,7 +3,7 @@ import { useAuth } from "../AuthProvider";
 import { getDatabase, ref, push } from "firebase/database";
 import { Container, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import Backgournd from "../components/Background";
+import Background from "../components/Background";
 import scuttlebuttList from "../data/scuttlebuttList";
 import calculateScore from "../data/calculateScore";
 import "./Scuttlebutt.css";

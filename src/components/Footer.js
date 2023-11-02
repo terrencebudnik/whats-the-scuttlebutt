@@ -3,11 +3,10 @@ import { useAuth } from "../AuthProvider";
 import Button from "react-bootstrap/Button";
 import "./Footer.css";
 
-function footer() {
+function Footer() {
   const { currentUser, logout } = useAuth();
   return (
     <div className="footer">
-      <p>© 2023 by Scuttlebutt. All rights reserved.</p>
       {currentUser ? (
         <>
           <Button variant="outline-primary" onClick={logout}>
@@ -17,6 +16,7 @@ function footer() {
       ) : (
         <Button variant="outline-primary">Login</Button>
       )}
+      <p>© 2023 by Scuttlebutt. All rights reserved.</p>
     </div>
   );
 }

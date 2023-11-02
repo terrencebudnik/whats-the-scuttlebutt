@@ -49,4 +49,4 @@ function Results() {
   );
 }
 
-export default ResultsPage;
+export default Results;

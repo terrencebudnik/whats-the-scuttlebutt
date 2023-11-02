@@ -1,6 +1,6 @@
 import React from "react";
 import Background from "../components/Background";
-import Header from "../components/Header";
+import Banner from "../components/Banner";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Instructions from "../components/Instructions";
@@ -13,7 +13,7 @@ function Home() {
 
   return (
     <Background >
-      <Header />
+      <Banner />
       <Container fluid className="home-page">
         <Row className="home-page-header-row">
           <Col>

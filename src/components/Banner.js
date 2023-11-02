@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useAuth } from "../AuthProvider";
 import Container from "react-bootstrap/Container";
-import Header from "react-bootstrap/Header";
+import Navbar from "react-bootstrap/Navbar";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Login from "./Login";
 
-function Header() {
-  const { currentUser, logout } = useAuth();
+function Banner() {
+  const { currentUser } = useAuth();
   const [showModal, setShowModal] = useState(false);
 
   const handleOpenModal = () => setShowModal(true);
@@ -42,4 +42,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default Banner;
