@@ -5,6 +5,7 @@ import {
   signInWithPhoneNumber,
   RecaptchaVerifier,
 } from "firebase/auth";
+import { signOut } from "firebase/auth";
 import firebaseApp from "./firebase/firebaseConfig";
 
 const AuthContext = createContext();
@@ -23,6 +24,10 @@ export function AuthProvider({ children }) {
     return signInWithPhoneNumber(auth, phoneNumber, appVerifier);
   }
 
+  function logout() {
+    return signOut(auth);
+  }
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
@@ -35,6 +40,7 @@ export function AuthProvider({ children }) {
   const value = {
     currentUser,
     login,
+    logout
   };
 
   return (
