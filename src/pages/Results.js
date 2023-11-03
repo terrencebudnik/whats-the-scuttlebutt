@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getDatabase, ref, onValue } from "firebase/database";
-import Background from "../components/Background";
-import { Container } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./Results.css";
@@ -25,27 +24,28 @@ function Results() {
       return () => unsubscribe();
     }
   }, [scoreId, userId]);
+  
   return (
-    <Background>
-      <Container fluid className="results-page">
-        <h1 className="results-page-header">What's the Scuttlebutt?</h1>
-        <div className="results-page-body">
-      <h1>Results</h1>
-      {scoreData ? (
-        <>
-          <p>Original Sentence: {scoreData.sentence}</p>
-          <p>Your Input: {scoreData.userInput}</p>
-          <p>Your Score: {scoreData.score}</p>
-        </>
-      ) : (
-        <p>Loading...</p>
-      )}
-    </div>
-        <Link to="/home" className="results-page-link">
-          Click to Play Again!
-        </Link>
-      </Container>
-    </Background>
+    <Container fluid className="results-page">
+      <h1 className="results-page-header">What's the Scuttlebutt?</h1>
+      <div className="results-page-body">
+        <h1 className="results-header">Results</h1>
+        {scoreData ? (
+          <Container fluid className="results-box">
+            <h3 className="original-scuttlebutt-header">Original Scuttlebutt: </h3>
+            <p className="original-scuttlebutt">{scoreData.sentence}</p>
+            <h3>Your Input: </h3>
+            <p className="user-input">{scoreData.userInput}</p>
+            <p>Your Score: {scoreData.score}</p>
+          </Container>
+        ) : (
+          <p>Loading...</p>
+        )}
+      </div>
+      <Link to="/" className="results-page-link">
+        Click to Play Again!
+      </Link>
+    </Container>
   );
 }
 

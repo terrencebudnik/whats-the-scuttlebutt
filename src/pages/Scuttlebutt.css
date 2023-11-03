@@ -1,3 +1,9 @@
+.scuttlebutt-page {
+  display: grid;
+  justify-content: center;
+  height: 600px;
+}
+
 .scuttlebutt-page-header {
   text-align: center;
   margin-top: 20%;

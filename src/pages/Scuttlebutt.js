@@ -3,7 +3,7 @@ import { useAuth } from "../AuthProvider";
 import { getDatabase, ref, push } from "firebase/database";
 import { Container, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import Background from "../components/Background";
+import Keyboard from "../scuttlebutt/Keyboad";
 import scuttlebuttList from "../data/scuttlebuttList";
 import calculateScore from "../data/calculateScore";
 import "./Scuttlebutt.css";
@@ -35,7 +35,7 @@ function Scuttlebutt() {
       timer = setTimeout(() => setCountdown(countdown - 1), 1000);
     } else if (gameState === "showSentence" && countdown === 0) {
       setGameState("input");
-      setCountdown(10);
+      setCountdown(1);
     } else if (gameState === "input" && countdown > 0) {
       timer = setTimeout(() => setCountdown(countdown - 1), 1000);
     } else if (gameState === "input" && countdown === 0) {
@@ -49,7 +49,9 @@ function Scuttlebutt() {
     if (gameState === "finished") {
       const score = calculateScore(sentence, userInput);
       logScore(score).then((scoreRef) => {
-        navigate("/results", { state: { scoreId: scoreRef.key, userId: currentUser.uid } });
+        navigate("/results", {
+          state: { scoreId: scoreRef.key, userId: currentUser.uid },
+        });
       });
     }
   }, [gameState, navigate, userInput, sentence]);
@@ -61,46 +63,49 @@ function Scuttlebutt() {
       score,
       userInput,
       sentence,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     };
     const newScoreRef = await push(userScoresRef, scoreData);
     return newScoreRef;
   };
-  
 
   const handleInputChange = (event) => {
     setUserInput(event.target.value);
   };
 
   return (
-    <Background>
-      <Container fluid className="scuttlebutt-page">
-        <Row>
-          <Col>
-            <h1 className="scuttlebutt-page-header">What's the Scuttlebutt?</h1>
-          </Col>
-        </Row>
+    <Container fluid className="scuttlebutt-page">
+      <Row>
+        <Col>
+          <h1 className="scuttlebutt-page-header">What's the Scuttlebutt?</h1>
+        </Col>
+      </Row>
 
-        <Row className="scuttlebutt-page-body">
-          {gameState === "countdown" && <div>Get ready! {countdown}</div>}
-          {gameState === "showSentence" && <div>{sentence}</div>}
-          {gameState === "input" && (
-            <Row className="scuttlebutt-page-text-input-row">
-              <Col>
-                <div className="time-left-div">Time left: {countdown}</div>
-              </Col>
-              <textarea
-                className="scuttlebutt-page-text-input"
-                value={userInput}
-                onChange={handleInputChange}
-                placeholder="Type the sentence here..."
-              />
-            </Row>
-          )}
-          {gameState === "finished" && <div>Time's up!</div>}
-        </Row>
-      </Container>
-    </Background>
+      <Row className="scuttlebutt-page-body">
+        {gameState === "countdown" && <div>Get ready! {countdown}</div>}
+        {gameState === "showSentence" && <div>{sentence}</div>}
+        {gameState === "input" && (
+          <Row className="scuttlebutt-page-text-input-row">
+            <Col>
+              <div className="time-left-div">Time left: {countdown}</div>
+            </Col>
+            <textarea
+              className="scuttlebutt-page-text-input"
+              value={userInput}
+              onChange={handleInputChange}
+              placeholder="Type the sentence here..."
+              readOnly
+            />
+          </Row>
+        )}
+        {gameState === "finished" && <div>Time's up!</div>}
+      </Row>
+      <Keyboard
+        inputName="input"
+        value={userInput}
+        onChange={(newValue) => setUserInput(newValue.input)} // Update inputValue state when keyboard inputs change.
+      />
+    </Container>
   );
 }
 

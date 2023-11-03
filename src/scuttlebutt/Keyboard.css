@@ -1,0 +1,38 @@
+.keyboard {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding: 10px 15px;
+  box-sizing: border-box;
+  background-color: #4c4c4c;
+  z-index: 2;
+}
+
+.keyboard-button {
+  padding: 6px;
+  margin: 2px;
+  border: none;
+  border-radius: 5px;
+  background-color: white;
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+  min-width: 30px;
+  flex: 1;
+  flex-shrink: 1;
+}
+
+.rows {
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+
+#second-row {
+  padding-left: 2%;
+  padding-right: 2%;
+}

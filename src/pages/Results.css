@@ -1,3 +1,9 @@
+.results-page {
+  display: grid;
+  justify-content: center;
+  height: 600px;
+}
+
 .results-page-header {
   text-align: center;
   margin-top: 20%;
@@ -11,4 +17,21 @@
   margin-top: 20%;
   font-size: 30px;
   font-family: "Permanent Marker", cursive;
+}
+
+.results-header {
+  text-align: center;
+  border: 1px solid black;
+  font-size: 36px;
+  font-family: "Permanent Marker", cursive;
+}
+
+.original-scuttlebutt {
+  text-align: center;
+  font-size: 18px;
+}
+
+.user-input {
+  text-align: center;
+  font-size: 18px;
 }
