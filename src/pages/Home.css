@@ -1,9 +1,6 @@
 .home-page {
-  display: grid;
-  justify-content: center;
-  height: 600px;
+  flex-grow: .5; 
 }
-
 
 .home-page-header-row {
   margin-top: 10%;
@@ -12,7 +9,6 @@
 .home-page-header {
   text-align: center;
   font-size: 44px;
-  font-family: "Permanent Marker", cursive;
 }
 
 .how-to-play-row {
@@ -23,16 +19,13 @@
 .how-to-play-button {
   margin: 0 10px;
   font-size: 24px;
-  font-family: "Permanent Marker", cursive;
 }
 
 .click-to-play-row {
   margin-top: 10%;
   font-size: 20px;
-  font-family: "Permanent Marker", cursive;
 }
 
 .click-to-play-link {
   font-size: 24px;
-  font-family: "Permanent Marker", cursive;
 }
