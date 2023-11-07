@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import Instructions from "../components/Instructions";
 import Button from "react-bootstrap/Button";
+// import logo from "../images/logo.svg"
 import "./Home.css";
 
 function Home() {
@@ -15,6 +16,11 @@ function Home() {
           <h1 className="home-page-header">What's the Scuttlebutt?</h1>
         </Col>
       </Row>
+      {/* <Row className="home-page-subheader-row">
+        <Col>
+          <img className="home-page-subheader-image" src={logo} alt="Scuttlebutt Logo" />
+        </Col>
+      </Row> */}
       <Row className="how-to-play-row">
         <Col>
           <Button
