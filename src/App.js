@@ -1,5 +1,5 @@
 import React from "react";
-import { AuthProvider } from "./AuthProvider";
+import { AuthProvider } from "./firebase/firebaseAuth"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Banner from "./components/Banner";
 import Home from "./pages/Home";

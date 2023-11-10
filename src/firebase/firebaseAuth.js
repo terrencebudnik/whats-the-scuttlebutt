@@ -1,35 +1,23 @@
-import {
-  getAuth,
-  RecaptchaVerifier,
-  signInWithPhoneNumber,
-} from "firebase/auth";
-import firebaseApp from "./firebaseConfig";
+import React, { createContext, useContext, useEffect, useState } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { appAuth } from "./firebaseConfig";
 
-const auth = getAuth(firebaseApp);
+const AuthContext = createContext();
 
-const setupRecaptcha = (containerId) => {
-  window.recaptchaVerifier = new RecaptchaVerifier(
-    containerId,
-    {
-      size: "invisible",
-    },
-    auth
+export const useAuth = () => useContext(AuthContext);
+
+export const AuthProvider = ({ children }) => {
+  const [currentUser, setCurrentUser] = useState(null);
+
+  useEffect(() => {
+    onAuthStateChanged(appAuth, (user) => {
+      setCurrentUser(user);
+    });
+  }, []);
+
+  return (
+    <AuthContext.Provider value={{ currentUser }}>
+      {children}
+    </AuthContext.Provider>
   );
 };
-
-const signInWithPhone = async (phoneNumber) => {
-  try {
-    const appVerifier = window.recaptchaVerifier;
-    const confirmationResult = await signInWithPhoneNumber(
-      auth,
-      phoneNumber,
-      appVerifier
-    );
-    return confirmationResult;
-  } catch (error) {
-    console.error("Sign in failed", error);
-    throw error;
-  }
-};
-
-export { setupRecaptcha, signInWithPhone };
