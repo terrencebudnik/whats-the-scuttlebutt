@@ -1,13 +1,5 @@
 .results-page {
-  display: grid;
-  justify-content: center;
   height: 600px;
-}
-
-.results-page-header {
-  text-align: center;
-  margin-top: 20%;
-  font-size: 45px;
 }
 
 .results-page-body {
@@ -19,13 +11,25 @@
 
 .results-header {
   text-align: center;
-  border: 1px solid black;
-  font-size: 36px;
+  font-size: 32px;
 }
 
-.original-scuttlebutt {
+.accordian-item {
+  width: 100%;
+}
+
+.accordian-body-original {
   text-align: center;
-  font-size: 18px;
+  font-size: 16px;
+  background-color: #00d8ffff;
+  color: white;
+}
+
+.accordian-body-your {
+  text-align: center;
+  font-size: 16px;
+  background-color: #ffa500ff;
+  color: white;
 }
 
 .user-input {

@@ -8,6 +8,7 @@ function Instructions(props) {
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
+      style = {{fontFamily: 'Short Stack, cursive'}}
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">

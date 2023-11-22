@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getDatabase, ref, onValue } from "firebase/database";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Accordion } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./Results.css";
@@ -24,28 +24,42 @@ function Results() {
       return () => unsubscribe();
     }
   }, [scoreId, userId]);
-  
+
   return (
+    <>
     <Container fluid className="results-page">
-      <h1 className="results-page-header">What's the Scuttlebutt?</h1>
       <div className="results-page-body">
-        <h1 className="results-header">Results</h1>
+        <h2 className="results-header">Results</h2>
         {scoreData ? (
-          <Container fluid className="results-box">
-            <h3 className="original-scuttlebutt-header">Original Scuttlebutt: </h3>
-            <p className="original-scuttlebutt">{scoreData.sentence}</p>
-            <h3>Your Input: </h3>
-            <p className="user-input">{scoreData.userInput}</p>
-            <p>Your Score: {scoreData.score}</p>
+          <Container className="results-box">
+            <h3>Your Score: {scoreData.score}</h3>
+            <Accordion defaultActiveKey={["0"]} alwaysOpen>
+              <Accordion.Item eventKey="0">
+                <Accordion.Header className="original-scuttlebutt-header">Original Scuttlebutt</Accordion.Header>
+                <Accordion.Body className="accordian-body-original">{scoreData.sentence}</Accordion.Body>
+              </Accordion.Item>
+              <Accordion.Item eventKey="1" >
+                <Accordion.Header >
+                 
+
+                  Your Scuttlebutt
+                 
+                  </Accordion.Header>
+                <Accordion.Body className="accordian-body-your">{scoreData.userInput}</Accordion.Body>
+              </Accordion.Item>
+            </Accordion>
           </Container>
         ) : (
           <p>Loading...</p>
         )}
       </div>
-      <Link to="/" className="results-page-link">
-        Click to Play Again!
-      </Link>
+
+      
     </Container>
+    <Link to="/" className="results-page-link">
+    Click to Play Again!
+  </Link>
+  </>
   );
 }
 
