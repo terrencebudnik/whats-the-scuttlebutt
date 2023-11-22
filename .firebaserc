@@ -1,5 +1,15 @@
 {
   "projects": {
     "default": "scuttlebutt-204a9"
-  }
+  },
+  "targets": {
+    "scuttlebutt-204a9": {
+      "hosting": {
+        "scuttlebutt": [
+          "whatsthescuttlebutt"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }
